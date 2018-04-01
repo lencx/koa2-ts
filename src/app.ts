@@ -1,25 +1,21 @@
 import * as Koa from 'koa'
 import * as Router from 'koa-router'
-import { logger, printListePort } from './utils/print'
+import * as bodyParser from 'koa-bodyparser'
 
-const port = 3000
+import { logger } from './utils/logger'
+import { AppRoutes } from './route'
+import { config } from './config/config'
+
+// console.log(AppRoutes)
 const app = new Koa()
+const router = new Router()
+const port = config.port
 
-// x-response-time
-app.use(async (ctx, next) => {
-    const start = Date.now()
-    await next()
-    const ms = Date.now() - start
-    ctx.set('X-Response-Time', `${ms}ms`)
-})
+AppRoutes.forEach(route => router[route.method](route.path, route.action))
 
-// logger
-app.use(logger())
-
-app.use(async ctx => {
-    ctx.body = 'Hello World'
-})
-
-
-app.listen(port)
-printListePort(port)
+app.use(logger)
+app.use(bodyParser())
+app.use(router.routes())
+app.use(router.allowedMethods())
+app.listen(config.port)
+console.log(`The server is starting at port ${config.port}`)

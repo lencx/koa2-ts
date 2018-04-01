@@ -1,7 +1,7 @@
 {
   "name": "hazy",
   "version": "0.0.1",
-  "description": "Koa + Docker + MongoDB",
+  "description": "Koa + Docker + MongoDB + TypeScript",
   "main": "index.js",
   "repository": "git@github.com:lencx/hazy.git",
   "author": "Len <cxin1314@gmail.com>",
@@ -11,11 +11,14 @@
   "license": "MIT",
   "dependencies": {
     "koa": "^2.5.0",
+    "koa-bodyparser": "^4.2.0",
     "koa-router": "^7.4.0"
   },
   "devDependencies": {
     "@types/koa": "^2.0.44",
+    "@types/koa-bodyparser": "^4.2.0",
     "@types/koa-router": "^7.0.27",
+    "moment": "^2.22.0",
     "nodemon": "^1.17.3",
     "ts-node": "^5.0.1",
     "typescript": "^2.8.1"
