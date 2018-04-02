@@ -6,7 +6,8 @@
   "repository": "git@github.com:lencx/hazy.git",
   "author": "Len <cxin1314@gmail.com>",
   "scripts": {
-    "dev": "nodemon --watch 'src/**/*' -e ts,tsx --exec 'ts-node' ./src/app.ts"
+    "dev": "cross-env NODE_ENV=development nodemon --watch 'src/**/*' -e ts,tsx --exec 'ts-node' ./src/app.ts",
+    "build": "tslint --project . && tsc"
   },
   "license": "MIT",
   "dependencies": {
@@ -18,9 +19,11 @@
     "@types/koa": "^2.0.44",
     "@types/koa-bodyparser": "^4.2.0",
     "@types/koa-router": "^7.0.27",
+    "cross-env": "^5.1.4",
     "moment": "^2.22.0",
     "nodemon": "^1.17.3",
     "ts-node": "^5.0.1",
+    "tslint": "^5.9.1",
     "typescript": "^2.8.1"
   }
 }
