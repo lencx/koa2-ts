@@ -2,11 +2,18 @@
     "compilerOptions": {
         "module": "commonjs",
         "target": "es2017",
+        "noEmitOnError": true,
+        "removeComments": true,
         "noImplicitAny": true,
         "outDir": "./dist",
-        "sourceMap": true
+        "sourceMap": true,
+        "allowJs": true,
     },
     "include": [
         "./src/**/*"
+    ],
+    "exclude": [
+        // "./src/app.ts"
+        "node_modules"
     ]
 }

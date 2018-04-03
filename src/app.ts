@@ -1,22 +1,24 @@
 import * as Koa from 'koa'
-import * as Router from 'koa-router'
 import * as bodyParser from 'koa-bodyparser'
+import * as views from 'koa-views'
+import * as proxy from 'koa-better-http-proxy'
+import chalk from 'chalk'
 
+import { routes } from './server/routes'
 import { config } from './config/config'
 import { logger } from './utils/logger'
-import { AppRoutes } from './routes'
+import * as path from 'path'
 
 const app = new Koa()
-const router = new Router()
-
-// console.log(process.env.NODE_ENV)
-
-AppRoutes.forEach(route => router[route.method](route.path, route.action)) 
+const port = chalk.green(`${config.port}`)
 
 app.use(logger)
+app.use(views(path.resolve(__dirname, 'views'), { extension: 'pug' }))
 app.use(bodyParser())
-app.use(router.routes())
-app.use(router.allowedMethods())
+app.use(routes)
+app.use(proxy(config.host, {
+    port: config.port,
+}))
 app.listen(config.port)
-console.log(`http://localhost:${config.port}`)
-console.log(`The server is starting at port ${config.port}`)
+
+console.log(`\n${config.host}:${port}\n`)

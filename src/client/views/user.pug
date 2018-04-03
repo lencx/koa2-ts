@@ -1,0 +1,9 @@
+extends ./../include/main
+
+block content
+    h1 User
+    ul
+        each item in list
+            li
+                span!= item.name
+                span!= item.age

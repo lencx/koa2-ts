@@ -44,7 +44,8 @@ const writeLog = (ctx: Context) => {
 function logFile(ctx: Context, ...filename: string[]) {
     fs.exists(resolve('log', ...filename), exist => {
         // console.log(exist ? 'exist' : 'does not exist')
-        const data = `📌 ${moment().format('YYYY-MM-DD HH:mm:ss')} ${ctx.method}-${ctx.url} [${ctx.status}]
+        const uri = decodeURIComponent(ctx.url)
+        const data = `📌 ${moment().format('YYYY-MM-DD HH:mm:ss')} ${ctx.method}-${uri} [${ctx.status}]
 [INFO] userAgent:'${ctx.header['user-agent']}' | remoteAddress: ${ctx.request.ip}\n`
         if (exist) {
             fs.appendFile(resolve('log', ...filename), data, err => err
@@ -60,7 +61,7 @@ export async function logger(ctx: Context, next: () => Promise<any>) {
     const start = new Date().getMilliseconds()
 
     const logData: Partial<ILogData> = {
-        url: ctx.url,
+        url: decodeURIComponent(ctx.url),
         host: ctx.header['host'],
         query: ctx.query,
         method: ctx.method,
