@@ -1,4 +1,5 @@
 import { Context } from 'koa'
+import { User } from './../modules/user'
 
 export async function User(ctx: Context) {
     // return ctx.body = ctx.request.body

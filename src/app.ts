@@ -11,9 +11,12 @@ import * as path from 'path'
 
 const app = new Koa()
 const port = chalk.green(`${config.port}`)
+import * as mongoose from 'mongoose'
+
+mongoose.connect(config.dataBase)
 
 app.use(logger)
-app.use(views(path.resolve(__dirname, 'views'), { extension: 'pug' }))
+app.use(views(path.resolve(__dirname, 'client/views'), { extension: 'pug' }))
 app.use(bodyParser())
 app.use(routes)
 app.use(proxy(config.host, {
