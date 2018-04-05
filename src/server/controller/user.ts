@@ -1,5 +1,26 @@
 import { Context } from 'koa'
-import { User } from './../modules/user'
+import { UserModel } from './../models/user'
+
+// console.log(UserModel)
+
+const myInfo = new UserModel({
+    username: {
+        type: 'Len',
+        unique: true,
+        required: true,
+    },
+    password: {
+        type: '123abc',
+        required: true,
+    },
+    email: {
+        type: 'cxin1314@gmail.com',
+    },
+})
+
+// myInfo.save(err => {
+//     console.log(err)
+// })
 
 export async function User(ctx: Context) {
     // return ctx.body = ctx.request.body

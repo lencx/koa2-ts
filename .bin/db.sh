@@ -1,1 +1,0 @@
-mongod --config ~/mongodb/conf/mongod.conf

@@ -1,15 +1,13 @@
 import * as path from 'path'
+import chalk from 'chalk'
 
 const resolve = (...dir: string[]) => path.resolve(__dirname, '../..', ...dir)
 
-// const routeObj = (url: string, method?: string, action?: any) => {
-//     let o = {}
-//     o = Object.assign({path: url}, o)
-//     method !== undefined ? o = Object.assign({method}, o) : void 0
-//     action !== undefined ? o = Object.assign({action}, o) : void 0
-//     return o
-// }
+const cg = (str: string) => chalk.green(str)
+const cy = (str: string) => chalk.yellow(str)
 
 export {
+    cg,
+    cy,
     resolve,
 }
