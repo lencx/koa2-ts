@@ -8,12 +8,17 @@ const UserSechma = new Sechma({
         unique: true,
         required: true,
     },
-    password: {
-        type: String,
-        required: true,
+    age: {
+        type: Number,
+        min: 0,
+        max: 120,
     },
     email: {
         type: String,
+    },
+    updated: {
+        type: Date,
+        default: Date.now,
     },
 })
 

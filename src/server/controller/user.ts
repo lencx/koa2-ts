@@ -3,20 +3,22 @@ import { UserModel } from './../models/user'
 
 // console.log(UserModel)
 
-const myInfo = new UserModel({
-    username: {
-        type: 'Len',
-        unique: true,
-        required: true,
-    },
-    password: {
-        type: '123abc',
-        required: true,
-    },
-    email: {
-        type: 'cxin1314@gmail.com',
-    },
-})
+// const my = mongoose.model
+
+// const myInfo = new UserModel({
+//     username: {
+//         type: 'Len',
+//         unique: true,
+//         required: true,
+//     },
+//     password: {
+//         type: '123abc',
+//         required: true,
+//     },
+//     email: {
+//         type: 'cxin1314@gmail.com',
+//     },
+// })
 
 // myInfo.save(err => {
 //     console.log(err)

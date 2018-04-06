@@ -18,15 +18,7 @@ const db = mongoose.createConnection(config.dataBase, {
     //     autoIndex: false,
     // },
 })
-
-// global: NodeJS.Global
-
-if (db) {
-    console.log(`Mongoose default connection open to ${cy(config.dataBase)}`)
-    // global.db = db
-} else {
-    console.log('mongodb connected failed')
-}
+db ? console.log(`Mongoose default connection open to ${cy(config.dataBase)}`) : void 0
 
 /** logger */
 app.use(logger)
@@ -41,14 +33,3 @@ app.use(proxy(config.host, {
 }))
 
 app.listen(config.port, () => console.log(`\n${config.host}:${port}`))
-
-// mongoose.connection.on('error', err => console.log(`Mongoose default connection open to ${err}`))
-
-// mongoose.connection.on('connected', () => console.log(`Mongoose default connection open to ${cy(config.dataBase)}`))
-
-process.on('SIGINT', () => {
-    mongoose.connection.close(() => {
-        console.log('Mongoose default connection closed through app twemination')
-        process.exit(0)
-    })
-})

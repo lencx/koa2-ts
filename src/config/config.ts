@@ -12,7 +12,7 @@ envPort = envPort === undefined ? 3000 : envPort
 
 export const config = {
     host: 'http://localhost',
-    dataBase: 'mongodb://127.0.0.1:27017',
+    dataBase: 'mongodb://127.0.0.1:27017/hazy',
     port: envPort,
     prettyLog: DEV_ENV,
     DEVENV: DEV_ENV,

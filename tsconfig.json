@@ -1,19 +1,16 @@
 {
-    "compilerOptions": {
-        "module": "commonjs",
-        "target": "es2017",
-        "noEmitOnError": true,
-        "removeComments": true,
-        "noImplicitAny": true,
-        "outDir": "./dist",
-        "sourceMap": true,
-        "allowJs": true,
-    },
-    "include": [
-        "./src/**/*"
-    ],
-    "exclude": [
-        // "./src/app.ts"
-        "node_modules"
-    ]
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2017",
+    "noEmitOnError": true,
+    "removeComments": true,
+    "noImplicitAny": true,
+    "outDir": "./dist",
+    "sourceMap": true,
+    "allowJs": true
+  },
+  "include": ["./src/**/*"],
+  "exclude": [
+    "node_modules"
+  ]
 }
