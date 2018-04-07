@@ -6,6 +6,7 @@
   "repository": "git@github.com:lencx/hazy.git",
   "author": "Len <cxin1314@gmail.com>",
   "scripts": {
+    "start": ". .bin/mongo.sh",
     "clear": "shx rm -rf dist/*",
     "dev": "cross-env NODE_ENV=development nodemon --watch 'src/**/*' -e ts,tsx --exec 'ts-node' ./src/app.ts",
     "build": "tslint --project . && tsc"
@@ -16,6 +17,7 @@
     "koa-bodyparser": "^4.2.0",
     "koa-render": "^0.2.1",
     "koa-router": "^7.4.0",
+    "koa-static": "^4.0.2",
     "koa-views": "^6.1.4",
     "mongoose": "^5.0.12",
     "pug": "^2.0.3"
@@ -24,6 +26,7 @@
     "@types/koa": "^2.0.44",
     "@types/koa-bodyparser": "^4.2.0",
     "@types/koa-router": "^7.0.27",
+    "@types/koa-static": "^4.0.0",
     "@types/koa-views": "^2.0.3",
     "@types/mongoose": "^5.0.7",
     "cross-env": "^5.1.4",

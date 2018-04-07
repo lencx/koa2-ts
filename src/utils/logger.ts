@@ -85,7 +85,7 @@ export async function logger(ctx: Context, next: () => Promise<any>) {
 
     logData.responseTime = new Date().getMilliseconds() - start
 
-    outputLog(logData, errorThrown)
+    // outputLog(logData, errorThrown)
     writeLog(ctx)
     if (errorThrown) {
         throw errorThrown

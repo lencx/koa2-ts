@@ -2,6 +2,7 @@ import * as Koa from 'koa'
 import * as bodyParser from 'koa-bodyparser'
 import * as views from 'koa-views'
 import * as proxy from 'koa-better-http-proxy'
+import * as assets from 'koa-static'
 
 import { routes } from './server/routes'
 import { config } from './config/config'
@@ -14,12 +15,12 @@ import * as mongoose from 'mongoose'
 
 mongoose.set('debug', true)
 const db = mongoose.createConnection(config.dataBase, {
-    // config: {
-    //     autoIndex: false,
-    // },
+    // config: { autoIndex: false },
 })
 db ? console.log(`Mongoose default connection open to ${cy(config.dataBase)}`) : void 0
 
+app.use(assets('.'))
+app.use(assets(resolve('assets/')))
 /** logger */
 app.use(logger)
 /** use template */

@@ -5,6 +5,11 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         meta(http-equiv="X-UA-Compatible", content="ie=edge")
         title!= title
+        - var host = 'https://lencx.github.io/ui'
+        //- - var host = '/assets'
+        link(rel="stylesheet", href!= host + "/s-ui/semantic/dist/semantic.min.css")
+        script(src!= host + "/s-ui/semantic/dist/jquery.min.js")
+        script(src!= host + "/s-ui/semantic/dist/semantic.min.js")
     body
         include ./header
         block content
