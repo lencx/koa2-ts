@@ -26,7 +26,7 @@ export class Gulpfile {
             browser: 'google chrome',
             port: config.port,
         })
-        gulp.watch('src/**/*')
+        gulp.watch('src/**/*', browserSync.reload)
     }
 
     // this special annotation using "run-sequence" module to run returned tasks in sequence
@@ -35,7 +35,7 @@ export class Gulpfile {
         return ['ts', 'browserSync']
     }
 
-    @Task('default', ['ts', 'build'])
+    @Task('default', ['build'])
     private defaultTask() {
         // using "defaultTask", because "default" is a reserved keyword in ES2015
     }
