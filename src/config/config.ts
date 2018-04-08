@@ -7,7 +7,9 @@ export interface IConfig {
     DEV_ENV: boolean
 }
 
-let envPort: any = process.env.NODE_PORT
+// console.log(process.env.port)
+
+let envPort: any = process.env.port
 envPort = envPort === undefined ? 3000 : envPort
 
 export const config = {

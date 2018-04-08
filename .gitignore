@@ -5,3 +5,4 @@ node_modules
 /dist
 /database
 /assets/s-ui
+/mongodb/log

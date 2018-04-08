@@ -29,7 +29,7 @@ export async function User(ctx: Context) {
     await ctx.render('user', {
         title: 'user',
         list: [{
-            name: 'lencx',
+            name: 'Len',
             age: 24,
         }, {
             name: 'Tom',

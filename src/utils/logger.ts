@@ -49,10 +49,10 @@ function logFile(ctx: Context, ...filename: string[]) {
 [INFO] userAgent:'${ctx.header['user-agent']}' | remoteAddress: ${ctx.request.ip}\n`
         if (exist) {
             fs.appendFile(resolve('log', ...filename), data, err => err
-                ? console.log(err) : console.log('append successful!'))
+                ? console.log(err) : void 0)
         } else {
             fs.writeFile(resolve('log', ...filename), data, err => err
-                ? console.log(err) : console.log('write successful!'))
+                ? console.log(err) : void 0)
         }
     })
 }
@@ -85,7 +85,7 @@ export async function logger(ctx: Context, next: () => Promise<any>) {
 
     logData.responseTime = new Date().getMilliseconds() - start
 
-    // outputLog(logData, errorThrown)
+    outputLog(logData, errorThrown)
     writeLog(ctx)
     if (errorThrown) {
         throw errorThrown

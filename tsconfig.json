@@ -7,9 +7,10 @@
     "noImplicitAny": true,
     "outDir": "./dist",
     "sourceMap": true,
-    "allowJs": true
+    "allowJs": true,
+    "experimentalDecorators": true
   },
-  "include": ["./src/**/*"],
+  "include": ["./src/**/*", "./gulpfile.ts"],
   "exclude": [
     "node_modules"
   ]
