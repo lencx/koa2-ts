@@ -1,39 +1,30 @@
-import { Context } from 'koa'
-import { UserModel } from './../models/user'
+// import { Context } from 'koa'
+// import { UserModel } from './../models/user'
 
-// console.log(UserModel)
+// // UserModel.findById({name: 'len'}, res => {
+// //     console.log(res)
+// // })
+// // const my = new UserModel({
+// //     name: 'lencxcxd',
+// //     age: 22,
+// //     email: 'sas@gmail.com',
+// // })
+// // // my.save()
+// // console.log(my.name)
 
-// const my = mongoose.model
+// export async function User(ctx: Context) {
+//     // return ctx.body = ctx.request.body
 
-// const myInfo = new UserModel({
-//     username: {
-//         type: 'Len',
-//         unique: true,
-//         required: true,
-//     },
-//     password: {
-//         type: '123abc',
-//         required: true,
-//     },
-//     email: {
-//         type: 'cxin1314@gmail.com',
-//     },
-// })
-
-// myInfo.save(err => {
-//     console.log(err)
-// })
-
-export async function User(ctx: Context) {
-    // return ctx.body = ctx.request.body
-    await ctx.render('user', {
-        title: 'user',
-        list: [{
-            name: 'Len',
-            age: 24,
-        }, {
-            name: 'Tom',
-            age: 18,
-        }],
-    })
-}
+//     const user = await UserModel.findOne({name: 'len'})
+//     console.log(user)
+//     await ctx.render('user', {
+//         title: 'user',
+//         list: [{
+//             name: 'Len',
+//             age: 24,
+//         }, {
+//             name: 'Tom',
+//             age: 18,
+//         }],
+//     })
+// }

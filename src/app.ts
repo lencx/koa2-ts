@@ -4,7 +4,7 @@ import * as views from 'koa-views'
 import * as proxy from 'koa-better-http-proxy'
 import * as assets from 'koa-static'
 
-import { routes } from './server/routes'
+import routes from './server/routes'
 import { config } from './config/config'
 import { logger } from './utils/logger'
 import { cg, cy, resolve } from './utils/util'
@@ -17,6 +17,7 @@ mongoose.set('debug', true)
 const db = mongoose.createConnection(config.dataBase, {
     // config: { autoIndex: false },
 })
+
 db ? console.log(`Mongoose default connection open to ${cy(config.dataBase)}`) : void 0
 
 app.use(assets('.'))

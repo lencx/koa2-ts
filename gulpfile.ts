@@ -8,7 +8,7 @@ const tsProject = ts.createProject('tsconfig.json')
 
 @Gulpclass()
 export class Gulpfile {
-    @Task('ts')
+    @Task()
     private ts() {
         return tsProject.src()
             .pipe(tsProject())
@@ -18,7 +18,7 @@ export class Gulpfile {
             }))
     }
 
-    @Task('browserSync')
+    @Task()
     private browserSync() {
         browserSync.init({
             proxy: `${config.host}:${config.port}`,
@@ -30,7 +30,7 @@ export class Gulpfile {
     }
 
     // this special annotation using "run-sequence" module to run returned tasks in sequence
-    @SequenceTask('build')
+    @SequenceTask()
     private build() {
         return ['ts', 'browserSync']
     }
