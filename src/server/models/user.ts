@@ -10,12 +10,6 @@ export interface IUserModel extends IUser, Document {
     createTime: Date
 }
 
-// const userSchema = new Schema({
-//     username: String,
-//     _createTime: {type: Date, default: Date.now}
-//   }, {
-//     versionKey: false
-//   })
 const userSchema = new Schema({
     username: String,
     _createTime: {

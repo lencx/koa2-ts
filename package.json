@@ -13,6 +13,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "config": "^1.30.0",
     "koa": "^2.5.0",
     "koa-bodyparser": "^4.2.0",
     "koa-render": "^0.2.1",
@@ -24,6 +25,7 @@
   },
   "devDependencies": {
     "@types/browser-sync": "^0.0.38",
+    "@types/config": "^0.0.34",
     "@types/gulp": "^4.0.5",
     "@types/gulp-typescript": "^2.13.0",
     "@types/koa": "^2.0.44",

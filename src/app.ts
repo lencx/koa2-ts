@@ -5,20 +5,25 @@ import * as proxy from 'koa-better-http-proxy'
 import * as assets from 'koa-static'
 
 import routes from './server/routes'
-import { config } from './config/config'
+// import { config } from './config/config'
 import { logger } from './utils/logger'
 import { cg, cy, resolve } from './utils/util'
+import DEV_ENV from './utils/env'
+
+import * as config from 'config'
+
+console.log(config.get('host'), DEV_ENV)
 
 const app = new Koa()
 const port = cg(`${config.port}`)
 import * as mongoose from 'mongoose'
 
 mongoose.set('debug', true)
-const db = mongoose.createConnection(config.dataBase, {
+const db = mongoose.createConnection(config.get('dbUrl'), {
     // config: { autoIndex: false },
 })
 
-db ? console.log(`Mongoose default connection open to ${cy(config.dataBase)}`) : void 0
+db ? console.log(`Mongoose default connection open to ${cy(config.get('dbUrl'))}`) : void 0
 
 app.use(assets('.'))
 app.use(assets(resolve('assets/')))
@@ -28,10 +33,10 @@ app.use(logger)
 app.use(views(resolve(__dirname, 'client/views'), { extension: 'pug' }))
 app.use(bodyParser())
 /** router */
-app.use(routes)
+app.use(routes())
 /** dev proxy */
-app.use(proxy(config.host, {
-    port: config.port,
+app.use(proxy(config.get('host'), {
+    port: config.get('port'),
 }))
 
-app.listen(config.port, () => console.log(`\n${config.host}:${port}`))
+app.listen(config.get('port'), () => console.log(`\n${config.get('host')}:${port}`))

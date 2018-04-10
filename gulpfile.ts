@@ -5,6 +5,8 @@ import * as browserSync from 'browser-sync'
 
 import { config } from './src/config/config'
 const tsProject = ts.createProject('tsconfig.json')
+const createBrowserSync = browserSync.create()
+const reload = createBrowserSync.reload
 
 @Gulpclass()
 export class Gulpfile {
@@ -13,20 +15,20 @@ export class Gulpfile {
         return tsProject.src()
             .pipe(tsProject())
             .js.pipe(gulp.dest('dist'))
-            .pipe(browserSync.reload({
+            .pipe(reload({
                 stream: true,
             }))
     }
 
     @Task()
     private browserSync() {
-        browserSync.init({
+        createBrowserSync.init({
             proxy: `${config.host}:${config.port}`,
             files: ['/src/**/*.*'],
             browser: 'google chrome',
             port: config.port,
         })
-        gulp.watch('src/**/*', browserSync.reload)
+        gulp.watch('src/**/*').on('change', reload)
     }
 
     // this special annotation using "run-sequence" module to run returned tasks in sequence

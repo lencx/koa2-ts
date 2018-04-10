@@ -1,19 +1,18 @@
 import { Context } from 'koa'
 import * as Router from 'koa-router'
 import * as compose from 'koa-compose'
+
 import user from './api/user'
 
 const children = [
-    {routes: user, prefix: '/api'},
+    { routes: user, prefix: '/api' },
 ]
 
 export default function routes() {
     const router = new Router()
 
     router
-        .get('/', (ctx: Context) => {
-            ctx.body = {echo: 'Hello, Koa'}
-        })
+        .get('/', async function(ctx) {ctx.body = 'Hello, Koa'})
 
     // Nested routes
     children.forEach(child => {
