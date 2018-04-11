@@ -2,7 +2,8 @@ import { Context } from 'koa'
 import * as moment from 'moment'
 import * as fs from 'fs'
 
-import { config } from './../config/config'
+// import { config } from './../config/config'
+import * as config from 'config'
 import { resolve } from './util'
 import { mkdirs } from './mkdirs'
 
@@ -21,7 +22,8 @@ interface ILogData {
 }
 
 const outputLog = (log: Partial<ILogData>, thrownError: any) => {
-    if (config.prettyLog) {
+    // if (config.prettyLog) {
+    if (config.get('prettyLog')) {
         console.log(`${log.statusCode} ${log.method} ${log.url} - ${log.responseTime}ms`)
         if (thrownError) {
             console.error(thrownError)

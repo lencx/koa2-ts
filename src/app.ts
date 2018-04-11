@@ -15,7 +15,7 @@ import * as config from 'config'
 console.log(config.get('host'), DEV_ENV)
 
 const app = new Koa()
-const port = cg(`${config.port}`)
+const port = cg(`${config.get('port')}`)
 import * as mongoose from 'mongoose'
 
 mongoose.set('debug', true)
@@ -40,3 +40,12 @@ app.use(proxy(config.get('host'), {
 }))
 
 app.listen(config.get('port'), () => console.log(`\n${config.get('host')}:${port}`))
+
+// console.log('---------')
+// console.log(ipAddress)
+// console.log('---------')
+// console.log(o)
+
+// console.log(os.networkInterfaces().en0[0].address)
+// console.log(os.hostname())
+// console.log(os.())

@@ -1,8 +1,9 @@
 {
     "host": "localhost",
-    "hostIP": "xxx.xxx.xxx.xxx",
+    "hostIP": "172.16.0.45",
     "multiDevices": true,
     "port": 3000,
     "dbUrl": "mongodb://localhost:27017/hazy",
-    "files": "uploads/"
+    "files": "uploads/",
+    "prettyLog": true
 }
