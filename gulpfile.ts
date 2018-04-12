@@ -3,7 +3,7 @@ import * as gulp from 'gulp'
 import * as ts from 'gulp-typescript'
 import * as browserSync from 'browser-sync'
 
-import { config } from './src/config/config'
+import * as config from 'config'
 const tsProject = ts.createProject('tsconfig.json')
 const createBrowserSync = browserSync.create()
 const reload = createBrowserSync.reload
@@ -23,10 +23,10 @@ export class Gulpfile {
     @Task()
     private browserSync() {
         createBrowserSync.init({
-            proxy: `${config.host}:${config.port}`,
+            proxy: `${config.get('host')}:${config.get('port')}`,
             files: ['/src/**/*.*'],
             browser: 'google chrome',
-            port: config.port,
+            port: config.get('port'),
         })
         gulp.watch('src/**/*').on('change', reload)
     }

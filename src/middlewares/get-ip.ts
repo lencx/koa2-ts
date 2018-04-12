@@ -8,7 +8,7 @@ import { filter, flatten, map } from 'lodash'
 export interface IipAddress2 {
     IPv4: object | any
     IPv6: object | any
-    [index: string]: object
+    [index: string]: object | any
 }
 
 /**
@@ -26,22 +26,20 @@ const ipAddress2: IipAddress2 = {
  */
 const ifnames = os.networkInterfaces()
 const ipAddress: string[] = flatten(map(Object.keys(ifnames), ifname => {
-    const interfacesIPv4 = filter(ifnames[ifname], {
-        family: 'IPv4',
+    const interfacesType = (type: string) => filter(ifnames[ifname], {
+        family: type,
         internal: false,
     })
+    const addressType = (addr: string, type: string) => addr ? ipAddress2[type][ifname] = addr : void 0
 
-    const interfacesIPv6 = filter(ifnames[ifname], {
-        family: 'IPv6',
-        internal: false,
-    })
+    const ipv4 = interfacesType('IPv4')
 
-    const address = map(interfacesIPv4, 'address')[0]
-    address ? ipAddress2['IPv4'][ifname] = address : void 0
-    const address2 = map(interfacesIPv6, 'address')[0]
-    address2 ? ipAddress2['IPv6'][ifname] = address2 : void 0
+    const address = map(ipv4, 'address')[0]
+    const address2 = map(interfacesType('IPv6'), 'address')[0]
+    addressType(address, 'IPv4')
+    addressType(address2, 'IPv6')
 
-    return map(interfacesIPv4, 'address')
+    return map(ipv4, 'address')
 }))
 
 export {

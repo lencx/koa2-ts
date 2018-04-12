@@ -1,6 +1,6 @@
 {
     "host": "localhost",
-    "hostIP": "172.16.0.45",
+    "hostIP": "xxx.xxx.xxx.xxx",
     "multiDevices": true,
     "port": 3000,
     "dbUrl": "mongodb://localhost:27017/hazy",

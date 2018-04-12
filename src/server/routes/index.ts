@@ -12,7 +12,9 @@ export default function routes() {
     const router = new Router()
 
     router
-        .get('/', async function(ctx) {ctx.body = 'Hello, Koa'})
+        .get('/', async ctx => ctx.render('index', {
+            title: 'Hi, Koa',
+        }))
 
     // Nested routes
     children.forEach(child => {
