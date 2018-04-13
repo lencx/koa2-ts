@@ -7,13 +7,14 @@ import * as cors from '@koa/cors'
 import * as config from 'config'
 
 import { cg, cy, resolve } from './../utils'
-import { setHostIP } from './../utils/env'
+import { DEV_ENV, setHostIP } from './../utils/env'
 import delay from './delay'
 import HandleErrors from './error'
 
 // import { ipAddress } from './../middlewares/get-ip'
 // console.log(ipAddress)
-setHostIP()
+config.get('autoGetIP') && DEV_ENV
+    ? setHostIP() : config.get('host')
 
 // console.log(resolve(__dirname, '../client/views'))
 export default function middleware() {

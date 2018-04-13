@@ -19,4 +19,4 @@ export function setHostIP() {
     })
 }
 
-export default process.env.NODE_ENV === 'development'
+export const DEV_ENV = process.env.NODE_ENV === 'development'
