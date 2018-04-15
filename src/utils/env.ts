@@ -1,6 +1,6 @@
 import * as fs from 'fs'
 
-import { cy, resolve } from './index'
+import { resolve } from './index'
 import { ipAddress } from './../middlewares/get-ip'
 
 /**
@@ -12,7 +12,7 @@ export function setHostIP() {
         if (d.hostIP !== ipAddress[0]) {
             d.hostIP = ipAddress[0] || 'localhost'
             fs.writeFile(resolve('config/default.json'), JSON.stringify(d, null, 4), () => {
-                const confFile = `${cy('config/default.json')}`
+                const confFile = '\x1b[31mconfig/default.json\x1b[0m'
                 console.log(`IP address successfully written to ${confFile}`)
             })
         }

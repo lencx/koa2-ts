@@ -4,8 +4,8 @@ if [ ! -d "database" ]; then
 fi
 
 if [ ! -d "mongodb/log" ]; then
-    mkdir mongodb/log
+    mkdir log/mongodb/
 fi
 
-mongod -f mongodb/mongod.conf
-yarn dev
+mongod -f ./mongod.conf
+# yarn dev

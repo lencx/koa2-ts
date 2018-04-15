@@ -1,7 +1,7 @@
 {
     "host": "localhost",
-    "hostIP": "xxx.xxx.xxx.xxx",
-    "autoGetIP": false,
+    "hostIP": "192.168.199.234",
+    "autoGetIP": true,
     "port": 3000,
     "dbUrl": "mongodb://localhost:27017/hazy",
     "files": "uploads/",
